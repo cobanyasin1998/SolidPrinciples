@@ -14,7 +14,7 @@ namespace SolidPrinciples
         /*
          * ----------
          * 
-         S ingle Responsibility Principle   (SRP)
+         S ingle Responsibility Principle   (SRP) -Ok
          O open-Close Principle             (OCP)
          L iskov Substitution Principle     (LSP)
          I nterface Segregation Principle   (ISP)
