@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SolidPrinciples.Car;
+using System;
 
 namespace SolidPrinciples
 {
@@ -33,5 +34,34 @@ namespace SolidPrinciples
          *
          * ----------
          */
+
+
+
+
+        public void RunCars()
+        {
+            try
+            {
+                var mercedes = new MercedesBenz();
+                mercedes.Go();
+                throw new EngineStartException();
+                throw new AirPressureException();
+
+                mercedes.Stop();
+
+                mercedes.SendTripInfoEmailToDriver(new Models.DriverInfo());
+            }
+            catch (EngineStartException ex)
+            {
+                new TripInfoLogger(new GermanyLogger()).Log(ex.Message);
+            }
+            catch (AirPressureException ex)
+            {
+                new TripInfoLogger(new LocalStorageLogger()).Log(ex.Message);
+            }
+        }
+       
     }
+
+
 }
