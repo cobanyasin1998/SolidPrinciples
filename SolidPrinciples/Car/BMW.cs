@@ -1,14 +1,12 @@
 ﻿using SolidPrinciples.Models;
+using SolidPrinciples.Models.SmsModels;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net.Mail;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SolidPrinciples.Car
 {
-    public class BMW : BaseCar, IEmailSendable
+    public class BMW : BaseCar, IEmailSendable,IMultipleEmailSendable
     {
 
         public override double GetCostPerKM()
@@ -30,6 +28,23 @@ namespace SolidPrinciples.Car
 
                 var client = new SmtpClient("mail.mercedes.com", 587);
                 client.Send(mailMessage);
+            }
+        }
+
+        public void SendTripIntoEmailToDrivers(List<DriverInfo> drivers)
+        {
+            foreach (var driver in drivers)
+            {
+                if (!string.IsNullOrEmpty(driver.PhoneNumber))
+                {
+                    var smsSender = new SmsSender();
+                    smsSender.SendSms(new SmsModel()
+                    {
+                        Message = "Todays Trip",
+                        PhoneNumber = driver.PhoneNumber,
+                        SendTime = DateTime.Now
+                    });
+                }
             }
         }
 
