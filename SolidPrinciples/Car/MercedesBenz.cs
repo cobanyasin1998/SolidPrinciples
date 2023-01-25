@@ -9,9 +9,13 @@ using System.Threading.Tasks;
 
 namespace SolidPrinciples.Car
 {
-    public class MercedesBenz:BaseCar
+    public class MercedesBenz : BaseCar
     {
-        public int TripKM { get; set; }
+        public override double GetCostPerKM()
+        {
+            return 2;
+        }
+
         public void Go()
         {
             Console.WriteLine("Car is now going....");
@@ -20,7 +24,7 @@ namespace SolidPrinciples.Car
         {
             Console.WriteLine("Car has stopped....");
         }
-     
+
     }
 
 }

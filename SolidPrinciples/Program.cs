@@ -9,7 +9,14 @@ namespace SolidPrinciples
             Console.WriteLine("Hello World!");
         }
 
+        public void CalculateTripCost()
+        {
+            var calculator = new FuelCostCalculator();
 
+            var cost = calculator.Calculate(new Car.MercedesBenz());
+
+            Console.WriteLine($"Total cost for this car is {cost} TL");
+        }
 
         /*
          * ----------

@@ -8,7 +8,12 @@ namespace SolidPrinciples.Car
 {
     public class BMW : BaseCar
     {
-        public int TripKM { get; set; }
+
+        public override double GetCostPerKM()
+        {
+            return 1.5;
+        }
+
         public void Go()
         {
             Console.WriteLine("Car is now going....");

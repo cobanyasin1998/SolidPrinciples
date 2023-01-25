@@ -5,8 +5,11 @@ using System.Net.Mail;
 
 namespace SolidPrinciples.Car
 {
-    public class BaseCar
+    public abstract class BaseCar
     {
+        public int TripKM { get; set; }
+
+        public abstract double GetCostPerKM();
         public void SendTripInfoEmailToDriver(DriverInfo driverInfo)
         {
             if (!string.IsNullOrEmpty(driverInfo.EmailAddress))
